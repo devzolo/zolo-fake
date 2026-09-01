@@ -28,7 +28,7 @@ fake = { git = "https://github.com/devzolo/zolo-fake.git", rev = "v1.0.1" }
 
 ## Typed fixtures
 
-```zolo
+```rust
 use fake::{Fake, Faker, Locale}
 
 @derive(Fake)
@@ -61,7 +61,7 @@ constraints. Supported options include `provider`, `min`, `max`, `min_len`,
 
 ## Direct providers
 
-```zolo
+```rust
 let faker = Faker.new(seed: 7, locale: Locale::PtBr)
 
 print(faker.person().full_name())
@@ -108,7 +108,7 @@ $env:ZOLO_PLUGIN_DIR = "native/target/release"
 zolo run examples/native.zolo
 ```
 
-```zolo
+```rust
 use fake::{Fake, FakeNative}
 use fake::native::{NativeFaker}
 

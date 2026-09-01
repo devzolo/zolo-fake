@@ -1,0 +1,24 @@
+// Feature: one native plugin call per chunk for high-volume fake data.
+// First build zolo-plugin-fake-native, then run this file from this project.
+
+use fake::{Fake, FakeNative}
+use fake::native::{NativeFaker}
+
+@derive(Fake, FakeNative)
+struct User {
+  @fake(provider: .UuidV4, unique: true)
+  id: str,
+  @fake(provider: .FullName)
+  name: str,
+  @fake(provider: .SafeEmail, unique: true)
+  email: str,
+  @fake(min: 18, max: 90)
+  age: int,
+  active: bool,
+}
+
+let faker = NativeFaker.new(seed: 42, locale: "pt-BR", chunk_size: 4096)
+let users = User::fake_many_native(faker, 100_000)
+print("generated rows: {users.len()}")
+let engine_name = faker.engine()["name"]
+print("engine: {engine_name}")

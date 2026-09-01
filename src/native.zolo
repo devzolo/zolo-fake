@@ -1,0 +1,32 @@
+//! Opt-in native executor. This module is intentionally separate from the
+//! portable package root so browser/wasm builds never try to load a DLL.
+
+use plugin fake_native
+
+pub struct NativeFaker {
+  inner: Any,
+  pub chunk_size: int,
+}
+
+impl NativeFaker {
+  fn new(
+    seed: int = 0x5eed,
+    locale: str = "en",
+    chunk_size: int = 4096,
+    retry_limit: int = 100,
+    fallback_locale: str = "",
+  ) -> NativeFaker {
+    if chunk_size <= 0 { panic("fake-native: chunk_size must be positive") }
+    if retry_limit <= 0 { panic("fake-native: retry_limit must be positive") }
+    return NativeFaker {
+      inner: fake_native.NativeFaker.new(seed, locale, fallback_locale, chunk_size, retry_limit),
+      chunk_size: chunk_size,
+    }
+  }
+  fn seeded(seed: int) -> NativeFaker { return NativeFaker.new(seed, "en", 4096, 100, "") }
+  fn reserve(self, count: int) -> int { return self.inner.reserve(count) }
+  fn batch(self, plan: {str: Any}, start: int, count: int) -> {str: Any} {
+    return self.inner.batch(plan, start, count)
+  }
+  fn engine(self) -> {str: Any} { return self.inner.engine() }
+}

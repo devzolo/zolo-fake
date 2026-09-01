@@ -1,0 +1,7 @@
+[project]
+name = "zolo-fake-examples"
+version = "1.0.0"
+entry = "basic.zolo"
+
+[dependencies]
+fake = { path = ".." }

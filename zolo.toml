@@ -1,0 +1,8 @@
+[package]
+name = "fake"
+version = "1.0.0"
+description = "Deterministic, typed fake data for Zolo"
+license = "MIT"
+authors = ["devzolo"]
+repository = "https://github.com/devzolo/zolo-fake"
+keywords = ["fake", "faker", "fixtures", "testing", "seed"]

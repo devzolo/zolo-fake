@@ -1,0 +1,164 @@
+schema_version = 1
+
+[[provider]]
+id = 1001
+path = "person.first_name"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::name::raw::FirstName"
+portable = "person.first_name.v1"
+batchable = true
+
+[[provider]]
+id = 1002
+path = "person.last_name"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::name::raw::LastName"
+portable = "person.last_name.v1"
+batchable = true
+
+[[provider]]
+id = 1003
+path = "person.full_name"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::name::raw::Name"
+portable = "person.full_name.v1"
+batchable = true
+
+[[provider]]
+id = 1101
+path = "internet.safe_email"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::internet::raw::SafeEmail"
+portable = "internet.safe_email.v1"
+batchable = true
+
+[[provider]]
+id = 1102
+path = "internet.username"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::internet::raw::Username"
+portable = "internet.username.v1"
+batchable = true
+
+[[provider]]
+id = 1103
+path = "internet.domain"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::internet::raw::DomainSuffix"
+portable = "internet.domain.v1"
+batchable = true
+
+[[provider]]
+id = 1104
+path = "internet.ipv4"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::internet::raw::IPv4"
+portable = "internet.ipv4.v1"
+batchable = true
+
+[[provider]]
+id = 1201
+path = "location.city"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::address::raw::CityName"
+portable = "location.city.v1"
+batchable = true
+
+[[provider]]
+id = 1202
+path = "location.state"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::address::raw::StateName"
+portable = "location.state.v1"
+batchable = true
+
+[[provider]]
+id = 1203
+path = "location.postcode"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::address::raw::PostCode"
+portable = "location.postcode.v1"
+batchable = true
+
+[[provider]]
+id = 1204
+path = "location.street"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::address::raw::StreetName"
+portable = "location.street.v1"
+batchable = true
+
+[[provider]]
+id = 1301
+path = "company.name"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::company::raw::CompanyName"
+portable = "company.name.v1"
+batchable = true
+
+[[provider]]
+id = 1302
+path = "company.profession"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::job::raw::Title"
+portable = "company.profession.v1"
+batchable = true
+
+[[provider]]
+id = 1303
+path = "company.industry"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::company::raw::Industry"
+portable = "company.industry.v1"
+batchable = true
+
+[[provider]]
+id = 1401
+path = "lorem.word"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::lorem::raw::Word"
+portable = "lorem.word.v1"
+batchable = true
+
+[[provider]]
+id = 1402
+path = "lorem.sentence"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::lorem::raw::Sentence"
+portable = "lorem.sentence.v1"
+batchable = true
+
+[[provider]]
+id = 1403
+path = "lorem.paragraph"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::faker::lorem::raw::Paragraph"
+portable = "lorem.paragraph.v1"
+batchable = true
+
+[[provider]]
+id = 1501
+path = "identifier.uuid_v4"
+returns = "str"
+locales = ["en", "pt-BR", "fr-FR"]
+native = "fake::uuid::UUIDv4"
+portable = "identifier.uuid_v4.v1"
+batchable = true
+

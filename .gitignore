@@ -1,0 +1,8 @@
+/target/
+/native/target/
+/.zolo-cache/
+/examples/zolo.lock
+*.dll
+*.dylib
+*.so
+*.pdb

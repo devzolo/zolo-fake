@@ -1,0 +1,29 @@
+// Feature: typed, deterministic fake data through the portable Zolo package.
+// Run: zolo install && zolo run src/main.zolo
+
+use fake::{Fake, Faker, Locale}
+
+@derive(Fake)
+struct User {
+  @fake(provider: .UuidV4)
+  id: str,
+  @fake(provider: .FullName)
+  name: str,
+  @fake(provider: .SafeEmail, unique: true)
+  email: str,
+  @fake(provider: .Int, min: 18, max: 80)
+  age: int,
+  @fake(provider: .Chance, probability: 0.82)
+  active: bool,
+  @fake(min_len: 1, max_len: 3)
+  tags: [str],
+  note: str?,
+}
+
+let faker = Faker.new(seed: 42, locale: Locale::PtBr)
+let first = User::fake(faker)
+let users = User::fake_many(faker, 4)
+
+print("{first.id}|{first.name}|{first.email}|{first.age}|{first.active}")
+print("generated rows: {users.len()}")
+print("direct provider: {faker.person().full_name()}")

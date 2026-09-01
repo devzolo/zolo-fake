@@ -1,0 +1,30 @@
+// Benchmark: compare the portable materializer with the native chunk executor.
+// Run: zolo bench src/benchmark.zolo
+
+use fake::{Fake, FakeNative, Faker, Locale}
+use fake::native::{NativeFaker}
+
+@derive(Fake, FakeNative)
+struct BenchUser {
+  @fake(provider: .UuidV4)
+  id: str,
+  @fake(provider: .FullName)
+  name: str,
+  @fake(provider: .SafeEmail)
+  email: str,
+  @fake(min: 18, max: 90)
+  age: int,
+  active: bool,
+}
+
+@bench
+fn portable_batch_1() {
+  let faker = Faker.new(seed: 42, locale: Locale::PtBr)
+  let _ = BenchUser::fake_many(faker, 1)
+}
+
+@bench
+fn native_batch_1() {
+  let faker = NativeFaker.new(seed: 42, locale: "pt-BR", chunk_size: 4096)
+  let _ = BenchUser::fake_many_native(faker, 1)
+}

@@ -12,7 +12,7 @@ adds a high-throughput batch path for large fixtures.
 ## Install from GitHub
 
 ```sh
-zolo add fake --git https://github.com/devzolo/zolo-fake.git --rev v1.0.0
+zolo add fake --git https://github.com/devzolo/zolo-fake.git --rev v1.0.1
 ```
 
 This writes the dependency to `zolo.toml`, installs it into Zolo's
@@ -23,7 +23,7 @@ Equivalent manifest entry:
 
 ```toml
 [dependencies]
-fake = { git = "https://github.com/devzolo/zolo-fake.git", rev = "v1.0.0" }
+fake = { git = "https://github.com/devzolo/zolo-fake.git", rev = "v1.0.1" }
 ```
 
 ## Typed fixtures

@@ -14,10 +14,10 @@ use fake::faker::internet::raw::{DomainSuffix, IPv4, SafeEmail, Username};
 use fake::faker::lorem::raw::{Paragraph, Sentence, Word};
 use fake::faker::name::raw::{FirstName, LastName, Name};
 use fake::locales::{EN, FR_FR, PT_BR};
-use fake::rand::rngs::StdRng;
 use fake::rand::SeedableRng;
+use fake::rand::rngs::StdRng;
 use fake::{Fake as _, Faker as RawFaker};
-use zolo_plugin::handle::{get_handle, register_handle_tagged, remove_handle, PluginHandle};
+use zolo_plugin::handle::{PluginHandle, get_handle, register_handle_tagged, remove_handle};
 use zolo_plugin::prelude::*;
 
 type PV = PluginValue;

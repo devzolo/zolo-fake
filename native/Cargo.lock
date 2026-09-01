@@ -176,21 +176,21 @@ checksum = "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5"
 
 [[package]]
 name = "zolo-alloc"
-version = "0.1.0"
-source = "git+https://github.com/devzolo/zolo-plugin-sdk.git?tag=v0.1.0#2d6182f4983253f3fef215548ab04a849fc1996b"
+version = "0.1.1"
+source = "git+https://github.com/devzolo/zolo-plugin-sdk.git?tag=v0.1.1#9b48cfbd913afb6c7fa7a521aed0fc1a047a94be"
 dependencies = [
  "zolo-alloc-exports",
 ]
 
 [[package]]
 name = "zolo-alloc-exports"
-version = "0.1.0"
-source = "git+https://github.com/devzolo/zolo-plugin-sdk.git?tag=v0.1.0#2d6182f4983253f3fef215548ab04a849fc1996b"
+version = "0.1.1"
+source = "git+https://github.com/devzolo/zolo-plugin-sdk.git?tag=v0.1.1#9b48cfbd913afb6c7fa7a521aed0fc1a047a94be"
 
 [[package]]
 name = "zolo-plugin"
-version = "0.1.0"
-source = "git+https://github.com/devzolo/zolo-plugin-sdk.git?tag=v0.1.0#2d6182f4983253f3fef215548ab04a849fc1996b"
+version = "0.1.1"
+source = "git+https://github.com/devzolo/zolo-plugin-sdk.git?tag=v0.1.1#9b48cfbd913afb6c7fa7a521aed0fc1a047a94be"
 dependencies = [
  "libloading",
  "linkme",
@@ -200,7 +200,7 @@ dependencies = [
 
 [[package]]
 name = "zolo-plugin-fake-native"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "fake",
  "zolo-plugin",
@@ -208,8 +208,8 @@ dependencies = [
 
 [[package]]
 name = "zolo-plugin-macros"
-version = "0.1.0"
-source = "git+https://github.com/devzolo/zolo-plugin-sdk.git?tag=v0.1.0#2d6182f4983253f3fef215548ab04a849fc1996b"
+version = "0.1.1"
+source = "git+https://github.com/devzolo/zolo-plugin-sdk.git?tag=v0.1.1#9b48cfbd913afb6c7fa7a521aed0fc1a047a94be"
 dependencies = [
  "proc-macro2",
  "quote",

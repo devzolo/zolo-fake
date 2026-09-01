@@ -1,6 +1,6 @@
 [package]
 name = "fake"
-version = "1.0.0"
+version = "1.0.1"
 description = "Deterministic, typed fake data for Zolo"
 license = "MIT"
 authors = ["devzolo"]

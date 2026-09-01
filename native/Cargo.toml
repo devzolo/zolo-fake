@@ -1,6 +1,6 @@
 [package]
 name = "zolo-plugin-fake-native"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2024"
 license = "MIT"
 description = "Optional fake-rs batch engine for zolo-fake"
@@ -16,4 +16,4 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 fake = "5.1"
-zolo-plugin = { git = "https://github.com/devzolo/zolo-plugin-sdk.git", tag = "v0.1.0" }
+zolo-plugin = { git = "https://github.com/devzolo/zolo-plugin-sdk.git", tag = "v0.1.1" }

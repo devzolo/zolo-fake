@@ -4,15 +4,14 @@
 use fake::{Fake, FakeNative, Faker, Locale}
 use fake::native::{NativeFaker}
 
-@derive(Fake, FakeNative)
-struct BenchUser {
-  @fake(provider: .UuidV4)
+struct BenchUser deriving Fake, FakeNative {
+  @provider(.UuidV4)
   id: str,
-  @fake(provider: .FullName)
+  @provider(.FullName)
   name: str,
-  @fake(provider: .SafeEmail)
+  @provider(.SafeEmail)
   email: str,
-  @fake(min: 18, max: 90)
+  @range(18, 90)
   age: int,
   active: bool,
 }

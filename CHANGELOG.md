@@ -3,6 +3,32 @@
 All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Changed
+
+- **Breaking.** The single `@fake(...)` field attribute is replaced by one
+  decorator for each thing it said: `@provider(.X)`, `@range(min, max)`,
+  `@chance(p)`, `@present(p)`, `@length(min, max)`, `@unique`, `@ignore`
+  and `@infer(false)`. They come with `Fake` and `FakeNative`; nothing
+  else is imported.
+- **Breaking.** `@derive(Fake)` is written `deriving Fake` in the type's
+  header, and the type option `infer` is given to the request:
+  `deriving Fake(infer: false)`.
+- `probability` meant the chance of `true` on a `bool` and the chance of a
+  value on an optional field. They are now `@chance` and `@present`.
+- A wrong argument, `min` above `max`, a probability outside `[0, 1]`,
+  `@present` on a field that is not optional and `@length` on a field
+  that is not a list are compile errors at the line that wrote them,
+  instead of a panic from inside the generator.
+- One of the decorators on a type that derives neither `Fake` nor
+  `FakeNative` is a compile error with the request to add, instead of
+  being ignored.
+- Generated values are unchanged: the same seed gives the same rows.
+
+Requires a Zolo compiler with declared decorators (`decorator`, `derive`
+blocks and `deriving` in the header).
+
 ## [1.0.1] - 2026-09-01
 
 ### Fixed

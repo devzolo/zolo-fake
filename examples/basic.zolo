@@ -3,19 +3,19 @@
 
 use fake::{Fake, Faker, Locale}
 
-@derive(Fake)
-struct User {
-  @fake(provider: .UuidV4)
+struct User deriving Fake {
+  @provider(.UuidV4)
   id: str,
-  @fake(provider: .FullName)
+  @provider(.FullName)
   name: str,
-  @fake(provider: .SafeEmail, unique: true)
+  @provider(.SafeEmail)
+  @unique
   email: str,
-  @fake(provider: .Int, min: 18, max: 80)
+  @range(18, 80)
   age: int,
-  @fake(provider: .Chance, probability: 0.82)
+  @chance(0.82)
   active: bool,
-  @fake(min_len: 1, max_len: 3)
+  @length(1, 3)
   tags: [str],
   note: str?,
 }

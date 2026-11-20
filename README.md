@@ -31,17 +31,17 @@ fake = { git = "https://github.com/devzolo/zolo-fake.git", rev = "v1.0.1" }
 ```rust
 use fake::{Fake, Faker, Locale}
 
-@derive(Fake)
-struct User {
-  @fake(provider: .UuidV4)
+struct User deriving Fake {
+  @provider(.UuidV4)
   id: str,
-  @fake(provider: .FullName)
+  @provider(.FullName)
   name: str,
-  @fake(provider: .SafeEmail, unique: true)
+  @provider(.SafeEmail)
+  @unique
   email: str,
-  @fake(provider: .Int, min: 18, max: 80)
+  @range(18, 80)
   age: int,
-  @fake(provider: .Chance, probability: 0.82)
+  @chance(0.82)
   active: bool,
 }
 
@@ -50,14 +50,29 @@ let user = User::fake(faker)
 let users = User::fake_many(faker, 10_000)
 ```
 
-`@derive(Fake)` generates concrete constructors on your type. This keeps
+`deriving Fake` generates concrete constructors on your type. This keeps
 completion, type checking, and diagnostics precise—there is no `Any`-based
 generic factory.
 
 Field inference recognizes common names such as `id`, `name`, `email`,
-`city`, and `company`. Use `@fake(...)` when you want an explicit provider or
-constraints. Supported options include `provider`, `min`, `max`, `min_len`,
-`max_len`, `probability`, `optional`, `unique`, and `ignore`.
+`city`, and `company`. The decorators below say more when inference is not
+enough. They come with `Fake`, so nothing else is imported, and each one is
+checked where it is written: a wrong argument, `min` above `max`, or
+`@present` on a field that is not optional is a compile error at that line.
+
+| Decorator | On a field it means |
+| --- | --- |
+| `@provider(.FullName)` | Use this provider instead of the inferred one |
+| `@range(18, 80)` | The closed range of a number, or of the elements of an `[int]` |
+| `@chance(0.82)` | The chance of `true` for a `bool` |
+| `@present(0.5)` | The chance that an optional field has a value |
+| `@length(1, 3)` | How many elements a list gets |
+| `@unique` | No two generated rows share the value |
+| `@ignore` | Leave the field at its zero value |
+| `@infer(false)` | No name-based inference for this field |
+
+`deriving Fake(infer: false)` turns name-based inference off for the whole
+type.
 
 ## Direct providers
 
@@ -112,8 +127,7 @@ zolo run examples/native.zolo
 use fake::{Fake, FakeNative}
 use fake::native::{NativeFaker}
 
-@derive(Fake, FakeNative)
-struct User { /* fields */ }
+struct User deriving Fake, FakeNative { /* fields */ }
 
 let faker = NativeFaker.new(seed: 42, locale: "pt-BR", chunk_size: 4096)
 let users = User::fake_many_native(faker, 100_000)
